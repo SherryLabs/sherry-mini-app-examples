@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createMetadata, Metadata, ValidatedMetadata, createParameter, PARAM_TEMPLATES, ExecutionResponse } from '@sherrylinks/sdk';
 import { avalanche } from 'viem/chains';
-import { serializeTx } from '@/app/utils/serializer.util';
+import { serializeTx } from '../../utils/serializer.util';
 
 export async function GET(req: NextRequest) {
     try {
@@ -26,7 +26,7 @@ export async function GET(req: NextRequest) {
                     label: '0.1 AVAX',
                     description:
                         'Action description',
-                    chains: { source: 'avalanche' },
+                    chains: { source: avalanche.id },
                     path: `/api/buy-joe?amount=0.1`,
                     params: [
                         createParameter(PARAM_TEMPLATES.ADDRESS, {
@@ -41,7 +41,7 @@ export async function GET(req: NextRequest) {
                     label: '0.5 AVAX',
                     description:
                         'Action description',
-                    chains: { source: 'avalanche' },
+                    chains: { source: avalanche.id },
                     path: `/api/buy-joe?amount=0.5`,
                     params: [
                         createParameter(PARAM_TEMPLATES.ADDRESS, {
@@ -56,7 +56,7 @@ export async function GET(req: NextRequest) {
                     label: '1 AVAX',
                     description:
                         'Action description',
-                    chains: { source: 'avalanche' },
+                    chains: { source: avalanche.id },
                     path: `/api/buy-joe?amount=1`,
                     params: [
                         createParameter(PARAM_TEMPLATES.ADDRESS, {
@@ -71,7 +71,7 @@ export async function GET(req: NextRequest) {
                     label: 'Send it',
                     description:
                         'How much AVAX? You tell us.',
-                    chains: { source: 'avalanche' },
+                    chains: { source: avalanche.id },
                     path: `/api/buy-joe`,
                     params: [
                         createParameter(PARAM_TEMPLATES.ADDRESS, {
@@ -93,8 +93,6 @@ export async function GET(req: NextRequest) {
 
         // Validate metadata using the SDK
         const validated: ValidatedMetadata = createMetadata(metadata);
-
-        console.log(validated)
 
         // Return with CORS headers for cross-origin access
         return NextResponse.json(validated, {
@@ -139,9 +137,8 @@ export async function POST(req: NextRequest) {
         // Create the response object expected by Sherry
         const resp: ExecutionResponse = {
             serializedTransaction: serialized,
-            chainId: avalanche.name, // Use the chain name, not the ID
+            chainId: avalanche.id,
         };
-        console.log(resp)
 
         // Return the response with CORS headers
         return NextResponse.json(resp, {
