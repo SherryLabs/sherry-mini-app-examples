@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 5000",
+    "dev": "next dev -p ${PORT:-5001}",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p ${PORT:-5001}",
     "lint": "next lint"
   },
   "dependencies": {
-    "@sherrylinks/sdk": "2.25.21-beta.1",
+    "@sherrylinks/sdk": "2.28.24-beta.1",
     "@traderjoe-xyz/sdk-core": "^2.0.11",
     "@traderjoe-xyz/sdk-v2": "^3.0.26",
     "next": "15.3.2",

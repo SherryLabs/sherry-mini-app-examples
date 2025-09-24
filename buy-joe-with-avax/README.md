@@ -8,7 +8,7 @@ It serves as an example of how to integrate with the **LFJ (Let's Fucking Joe, a
 * Renders metadata for the Sherry Mini App to display a simple UI
 * Provides pre-configured actions to buy JOE with preset AVAX amounts
 * Supports custom AVAX input from the user to define a flexible swap
-* Serializes a transaction to interact with the Trader Joe protocol via LFJ
+* Serializes a transaction to interact with the LFJ protocol via LFJ
 * Enables Sherry to execute swaps through blockchain-compatible actions
 
 ## Tech Stack

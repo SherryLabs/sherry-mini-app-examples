@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
         // We'll build the metadata object step by step below
         const metadata: Metadata = {
             url: 'https://lfj.gg/',
-            icon: 'https://www.cryptotimes.io/wp-content/uploads/2025/02/LFJ-Trading-Terminal-Launches-Limit-Orders-for-AVAX.png',
+            icon: 'https://kfrzkvoejzjkugwosqxx.supabase.co/storage/v1/object/public/images/joesherry.png',
             title: 'Buy JOE with AVAX',
             baseUrl: serverUrl,
             description:
