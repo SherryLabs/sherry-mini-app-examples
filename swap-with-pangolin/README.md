@@ -1,11 +1,11 @@
-# Buy PNG with AVAX - Mini App
+# Buy PNG with AVAX - Trigger
 
-This project is a **Express.js backend** that powers a Sherry Mini App for swapping AVAX to PNG tokens on the Avalanche network.
+This project is a **Express.js backend** that powers a Sherry Trigger for swapping AVAX to PNG tokens on the Avalanche network.
 It serves as an example of how to integrate with the **Pangolin Exchange** protocol to create an interactive Web3 experience inside the Sherry ecosystem.
 
 ## What It Does
 
-* Renders metadata for the Sherry Mini App to display a simple UI
+* Renders metadata for the Sherry Trigger to display a simple UI
 * Provides pre-configured actions to buy PNG with preset AVAX amounts
 * Supports custom AVAX input from the user to define a flexible swap
 * Serializes a transaction to interact with the Pangolin protocol v2 via Pangolin SDK
@@ -20,7 +20,7 @@ It serves as an example of how to integrate with the **Pangolin Exchange** proto
 
 ## How It Works
 
-The mini app exposes:
+The trigger exposes:
 
 * `GET /api/buy-png`: returns metadata with multiple swap actions (0.1, 0.5, 1 AVAX + custom input)
 * `POST /api/buy-png`: receives parameters and returns a serialized transaction ready for submission

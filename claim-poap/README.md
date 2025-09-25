@@ -1,4 +1,4 @@
-# POAP Claim - Mini App
+# POAP Claim - Trigger
 
 This is an example of how to build a mini-app that allows users to claim POAP (Proof of Attendance Protocol) badges through the Sherry Links SDK.
 
@@ -11,7 +11,7 @@ This is an example of how to build a mini-app that allows users to claim POAP (P
 
 ## How It Works
 
-The mini app exposes:
+The trigger exposes:
 
 * `GET /api/claim-poap`: returns metadata for the POAP claim action
 * `POST /api/claim-poap`: claims a POAP for a user using POAP API
