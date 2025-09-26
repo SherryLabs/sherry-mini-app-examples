@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Metadata, createMetadata, ValidatedMetadata, TextBasedParameter, NumberBasedParameter, DynamicAction } from "@sherrylinks/sdk";
+import { Metadata, createMetadata, ValidatedMetadata, TextBasedParameter, NumberBasedParameter, DynamicAction, NestedAction } from "@sherrylinks/sdk";
 import { createRedisClient } from "../../lib/redis";
 
 const POAP_API_KEY = process.env.POAP_API_KEY;
@@ -7,6 +7,7 @@ const POAP_CLIENT_ID = process.env.POAP_CLIENT_ID;
 const POAP_CLIENT_SECRET = process.env.POAP_CLIENT_SECRET;
 const POAP_EVENT_ID = process.env.POAP_EVENT_ID;
 const POAP_SECRET_CODE = process.env.POAP_SECRET_CODE;
+const POAP_CLAIM_PASSWORD = process.env.POAP_CLAIM_PASSWORD;
 
 export async function GET(req: NextRequest) {
   try {
@@ -49,10 +50,16 @@ export async function GET(req: NextRequest) {
       actions: [
         {
           type: "dynamic",
-          label: "Mint POAP",
+          label: "Claim POAP",
           path: "/api/claim-poap",
           responseType: 'data',
           params: [
+            {
+              name: 'password',
+              label: 'Password',
+              type: 'text',
+              required: true,
+            } as TextBasedParameter,
             {
               name: 'eventId',
               label: 'Event Id',
@@ -95,12 +102,20 @@ export async function POST(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const eventId = searchParams.get('eventId');
+    const password = searchParams.get('password');
     const userAddress = searchParams.get('to');
 
     if (!eventId || !userAddress) {
       return NextResponse.json(
         { error: "User address and EventsId are required" },
         { status: 400 }
+      );
+    }
+
+    if (password !== POAP_CLAIM_PASSWORD) {
+      return NextResponse.json(
+        { error: "Invalid password" },
+        { status: 403 }
       );
     }
 
