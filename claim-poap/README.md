@@ -44,6 +44,7 @@ The trigger exposes:
    POAP_CLIENT_SECRET=your_poap_client_secret
    POAP_EVENT_ID=your_event_id
    POAP_SECRET_CODE=your_secret_code
+   POAP_CLAIM_PASSWORD=password_protection_for_claiming
    REDIS_URL=redis_connection_string (optional for caching)
    ```
 

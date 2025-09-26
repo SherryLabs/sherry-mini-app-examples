@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Metadata, createMetadata, ValidatedMetadata, TextBasedParameter, NumberBasedParameter, DynamicAction, NestedAction } from "@sherrylinks/sdk";
+import { Metadata, createMetadata, ValidatedMetadata, TextBasedParameter, NumberBasedParameter, DynamicAction } from "@sherrylinks/sdk";
 import { createRedisClient } from "../../lib/redis";
 
 const POAP_API_KEY = process.env.POAP_API_KEY;
